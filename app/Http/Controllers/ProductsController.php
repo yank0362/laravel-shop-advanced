@@ -7,6 +7,7 @@ use App\Models\OrderItem;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Category;
+
 class ProductsController extends Controller
 {
     public function index(Request $request)
