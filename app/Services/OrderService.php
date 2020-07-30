@@ -156,11 +156,14 @@ class OrderService
                 break;
             case 'alipay':
                 $refundNo = Order::getAvailableRefundNo();
+
                 $ret = app('alipay')->refund([
                     'out_trade_no' => $order->no,
                     'refund_amount' => $order->total_amount,
                     'out_request_no' => $refundNo,
                 ]);
+
+
                 if ($ret->sub_code) {
                     $extra = $order->extra;
                     $extra['refund_failed_code'] = $ret->sub_code;
